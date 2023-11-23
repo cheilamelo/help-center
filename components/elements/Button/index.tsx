@@ -1,4 +1,4 @@
-import type { IButtonBase } from './ButtonBase';
+import type { IButtonBase } from './ButtonBase'
 import { ButtonBase } from './ButtonBase'
 
 export function ButtonPrimary({
@@ -10,7 +10,7 @@ export function ButtonPrimary({
 }: Omit<IButtonBase, 'className'>) {
   return (
     <ButtonBase
-      className="bg-primary-100 text-white text-sm h-12 flex justify-center w-full rounded items-center"
+      className="bg-greenscale-100 text-white text-sm h-12 flex justify-center w-full rounded items-center"
       href={href}
       id={id}
       onClick={onClick}
@@ -30,7 +30,7 @@ export function ButtonSecondary({
 }: Omit<IButtonBase, 'className'>) {
   return (
     <ButtonBase
-      className="bg-transparent border-2 border-primary-100 text-primary-100 h-12 flex justify-center w-full rounded items-center hover:bg-primary-100 hover:text-white transition-all"
+      className="bg-transparent border-2 border-greenscale-100 text-greenscale-100 h-12 flex justify-center w-full rounded items-center hover:bg-greenscale-100 hover:text-white transition-all"
       href={href}
       id={id}
       onClick={onClick}
@@ -50,7 +50,27 @@ export function ButtonWhite({
 }: Omit<IButtonBase, 'className'>) {
   return (
     <ButtonBase
-      className="rounded px-8 bg-grayscale-50 text-grayscale-300 h-12 text-sm flex items-center justify-center mx-auto font-medium"
+      className="rounded py-[18px] bg-white text-grayscale-700 border-grayscale-100 h-12 text-sm flex items-center justify-center mx-auto font-medium z-[1]"
+      href={href}
+      id={id}
+      onClick={onClick}
+      type={type}
+    >
+      {children}
+    </ButtonBase>
+  )
+}
+
+export function ButtonBorderWhite({
+  children,
+  onClick,
+  href,
+  type,
+  id
+}: Omit<IButtonBase, 'className'>) {
+  return (
+    <ButtonBase
+      className="rounded py-[18px] bg-transparent text-white border border-white h-12 text-sm flex items-center justify-center mx-auto font-medium z-[1]"
       href={href}
       id={id}
       onClick={onClick}
