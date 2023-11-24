@@ -3,7 +3,7 @@ import { Title, Text } from '@/components/elements/Texts'
 
 export default function Hero() {
   return (
-    <div className="pt-20">
+    <div className="pt-20 mb-12">
       <div className="flex h-full relative min-h-[360px] items-center bg-hero-home bg-no-repeat bg-center bg-cover">
         <div className="px-5 w-full max-w-6xl 3xl:max-w-[100rem] mx-auto">
           <div className="flex flex-col md:max-w-[31rem]">
@@ -19,7 +19,9 @@ export default function Hero() {
                 <ButtonWhite href="/">Artigos</ButtonWhite>
               </div>
               <div className="w-[186px] md:w-[244px]">
-                <ButtonBorderWhite href="/">Atualizações</ButtonBorderWhite>
+                <ButtonBorderWhite href="/#updates">
+                  Atualizações
+                </ButtonBorderWhite>
               </div>
             </div>
           </div>
