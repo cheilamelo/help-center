@@ -24,25 +24,25 @@ export const Footer = () => {
               className="h-10 w-10 flex items-center justify-center rounded-lg bg-grayscale-50"
               href="https://br.linkedin.com/company/routeasy"
             >
-              <Icon name="FaLinkedin" size={20} color="greenscale-100" />
+              <Icon name="FaLinkedinIn" size={20} color="#434C59" />
             </LinkExternal>
             <LinkExternal
               className="h-10 w-10 flex items-center justify-center rounded-lg bg-grayscale-50"
               href="https://www.instagram.com/routeasy/"
             >
-              <Icon name="FaInstagram" size={20} />
+              <Icon name="FaInstagram" size={20} color="#434C59" />
             </LinkExternal>
             <LinkExternal
               className="h-10 w-10 flex items-center justify-center rounded-lg bg-grayscale-50"
               href="https://www.facebook.com/routeasy/"
             >
-              <Icon name="FaFacebookF" size={20} />
+              <Icon name="FaFacebookF" size={20} color="#434C59" />
             </LinkExternal>
             <LinkExternal
               className="h-10 w-10 flex items-center justify-center rounded-lg bg-grayscale-50"
               href="https://www.youtube.com/c/CanalRoutEasy"
             >
-              <Icon name="FaYoutube" size={20} />
+              <Icon name="FaYoutube" size={20} color="#434C59" />
             </LinkExternal>
           </div>
         </div>
@@ -65,7 +65,7 @@ export const Footer = () => {
       </Section>
       <div className="bg-purplescale-500">
         <Section>
-          <p className="text-left md:text-center py-7 text-base text-grayscale-50 w-full h-full font-light">
+          <p className="text-left py-7 text-base text-grayscale-50 w-full h-full font-light">
             ©2023 Todos os direitos reservados - RoutEasy
           </p>
         </Section>

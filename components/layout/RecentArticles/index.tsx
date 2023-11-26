@@ -39,7 +39,7 @@ export default function RecentArticles() {
       <Title as="h3" className="normal-case text-2xl font-medium mb-4">
         Artigos adicionados recentemente
       </Title>
-      <Text className="text-sm/[18px] font-normal grid grid-cols-1 md:grid-cols-2 md:gap-x-4 gap-y-2">
+      <Text className="text-sm/[18px] font-light grid grid-cols-1 md:grid-cols-2 md:gap-x-4 gap-y-2">
         {articles.map(article => (
           <Link
             href={article.html_url}
