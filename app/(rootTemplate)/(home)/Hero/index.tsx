@@ -3,7 +3,7 @@ import { Title, Text } from '@/components/elements/Texts'
 
 export default function Hero() {
   return (
-    <div className="pt-20 mb-12">
+    <div className="pt-20 mb-16">
       <div className="flex h-full relative min-h-[360px] items-center bg-hero-home bg-no-repeat bg-center bg-cover">
         <div className="px-5 w-full max-w-6xl 3xl:max-w-[100rem] mx-auto">
           <div className="flex flex-col md:max-w-[31rem]">

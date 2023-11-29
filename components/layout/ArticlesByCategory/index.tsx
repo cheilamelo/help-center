@@ -1,9 +1,6 @@
-import { ButtonSecondary } from '@/components/elements/Button'
 import { Section } from '@/components/elements/Section'
-import { Title, Text } from '@/components/elements/Texts'
+import { Title } from '@/components/elements/Texts'
 import { helpCenterService } from '@/services/help-center'
-import { IconColored } from './components/IconColored'
-import { ListIconColored } from './content'
 import CardsArticlesByCategory from '../CardsArticlesByCategory'
 
 export default async function ArticlesByCategory() {

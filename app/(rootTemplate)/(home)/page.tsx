@@ -1,4 +1,5 @@
-import ArticlesByCategory_ from '@/components/layout/ArticlesByCategory_'
+'use client'
+
 import Hero from './Hero'
 import RecentArticles from '@/components/layout/RecentArticles'
 import { Support } from '@/components/layout/Support'
@@ -7,11 +8,19 @@ import { Title, Text } from '@/components/elements/Texts'
 import { faqList } from './content'
 import ArticlesByCategory from '@/components/layout/ArticlesByCategory'
 import MostSearchedArticles from '@/components/layout/MostSearchedArticles'
+import { SearchInput } from '@/components/layout/SearchInput'
 
 export default function Home() {
+  const handleSearch = (searchTerm: any) => {
+    // Aqui você pode realizar a lógica de busca com o searchTerm
+    console.log('Termo de pesquisa:', searchTerm)
+    // Por exemplo, chamar uma API, atualizar o estado da página, etc.
+  }
   return (
     <>
       <Hero />
+      {/* <SearchInput onSearch={handleSearch} /> */}
+      <SearchInput onSearch={handleSearch} />
       <MostSearchedArticles />
       <ArticlesByCategory />
       <RecentArticles />
