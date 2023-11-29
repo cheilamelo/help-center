@@ -67,7 +67,8 @@ module.exports = {
         }
       },
       backgroundImage: {
-        'hero-home': "url('/images/pictures/hero-home.png')"
+        'hero-home': "url('/images/pictures/hero-home.png')",
+        'section-help': "url('/images/pictures/banner-help.png')"
       }
     },
     plugins: []

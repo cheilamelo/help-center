@@ -21,10 +21,6 @@ class HelpCenterService {
   getArticles() {
     return this.api.get('/articles')
   }
-
-  getSearch() {
-    return this.api.get('/articles/search.json?query=${query}')
-  }
 }
 
 export const helpCenterService = new HelpCenterService()

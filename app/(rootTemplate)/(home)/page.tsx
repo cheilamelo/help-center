@@ -12,14 +12,11 @@ import { SearchInput } from '@/components/layout/SearchInput'
 
 export default function Home() {
   const handleSearch = (searchTerm: any) => {
-    // Aqui você pode realizar a lógica de busca com o searchTerm
-    console.log('Termo de pesquisa:', searchTerm)
-    // Por exemplo, chamar uma API, atualizar o estado da página, etc.
+    console.log('Termo pesquisado:', searchTerm)
   }
   return (
     <>
       <Hero />
-      {/* <SearchInput onSearch={handleSearch} /> */}
       <SearchInput onSearch={handleSearch} />
       <MostSearchedArticles />
       <ArticlesByCategory />
