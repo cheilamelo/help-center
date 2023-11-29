@@ -1,15 +1,18 @@
-import ArticlesByCategory from '@/components/layout/ArticlesByCategory'
+import ArticlesByCategory_ from '@/components/layout/ArticlesByCategory_'
 import Hero from './Hero'
 import RecentArticles from '@/components/layout/RecentArticles'
 import { Support } from '@/components/layout/Support'
 import { FAQ } from '@/components/layout/Faq'
 import { Title, Text } from '@/components/elements/Texts'
 import { faqList } from './content'
+import ArticlesByCategory from '@/components/layout/ArticlesByCategory'
+import MostSearchedArticles from '@/components/layout/MostSearchedArticles'
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <MostSearchedArticles />
       <ArticlesByCategory />
       <RecentArticles />
       <Support />

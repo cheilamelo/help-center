@@ -1,146 +1,74 @@
-'use client'
-
-import {
-  JSXElementConstructor,
-  Key,
-  PromiseLikeOfReactNode,
-  ReactElement,
-  ReactNode,
-  ReactPortal,
-  useEffect,
-  useState
-} from 'react'
-import axios from 'axios'
-import { Title } from '@/components/elements/Texts'
+import { ButtonSecondary } from '@/components/elements/Button'
 import { Section } from '@/components/elements/Section'
+import { Title, Text } from '@/components/elements/Texts'
+import { helpCenterService } from '@/services/help-center'
+import { IconColored } from './components/IconColored'
+import { ListIconColored } from './content'
+import CardsArticlesByCategory from '../CardsArticlesByCategory'
 
-const api = axios.create({
-  baseURL: 'https://routeasy.zendesk.com',
-  headers: {
-    accept: 'application/json'
-  }
-})
+export default async function ArticlesByCategory() {
+  const {
+    data: { categories }
+  } = await helpCenterService.getCategories()
 
-function getCategories() {
-  return api.get('/api/v2/help_center/categories?sort_order=desc')
-}
+  const {
+    data: { sections }
+  } = await helpCenterService.getSections()
 
-function getSections() {
-  return api.get('/api/v2/help_center/sections')
-}
+  const {
+    data: { articles }
+  } = await helpCenterService.getArticles()
 
-function getArticles() {
-  return api.get('/api/v2/help_center/articles')
-}
+  let data = categories?.map((category: any) => ({
+    ...category,
+    sub_categories: []
+  }))
 
-export default function ArticlesByCategory() {
-  const [sections, setSections] = useState<any[]>([])
-  const [categories, setCategories] = useState<any[]>([])
-  const [articles, setArticles] = useState<any[]>([])
-  const [categoriesSubcategories, setCategoriesSubcategories] = useState<any[]>(
-    []
-  )
-  const [subcategoriesArticles, setSubcategoriesArticles] = useState<any[]>([])
+  sections?.forEach((subcategory: any) => {
+    const index = data.findIndex(
+      (category: any) => category.id === subcategory.category_id
+    )
+    if (index >= 0) {
+      data[index].sub_categories.push({ ...subcategory, posts: [] })
+    }
+  })
 
-  // List Categories
-  useEffect(() => {
-    getCategories()
-      .then(res => {
-        console.log(res.data)
-        setCategories(res.data.categories)
-      })
-      .catch(err => console.log({ err }))
-  }, [])
+  articles?.forEach((article: any) => {
+    const { section_id } = article
+    const { category_id } = sections.find(
+      (subcategory: any) => subcategory.id === section_id
+    )
 
-  //   categories.forEach(categorie => {
-  //     console.log(categorie)
-  //   }, [])
-
-  // List Subcategories
-  useEffect(() => {
-    getSections()
-      .then(res => {
-        console.log(res.data)
-        setSections(res.data.sections)
-      })
-      .catch(err => console.log({ err }))
-  }, [])
-
-  //   sections.forEach(section => {
-  //     console.log(section)
-  //   }, [])
-
-  // List Aticles
-  useEffect(() => {
-    getArticles()
-      .then(res => {
-        console.log(res.data)
-        setArticles(res.data.articles)
-      })
-      .catch(err => console.log({ err }))
-  }, [])
-
-  //   articles.forEach(article => {
-  //     console.log(article)
-  //   }, [])
-
-  // renderizar as categorias com suas subcategorias
-  useEffect(() => {
-    const categoriesSubs = categories.map(categorie => ({
-      ...categorie,
-      sections: sections.filter(
-        subcategory => subcategory.category_id === categorie.id
+    const category_index = data.findIndex(
+      (category: any) => category.id === category_id
+    )
+    if (category_index >= 0) {
+      const sub_category_index = data[category_index].sub_categories.findIndex(
+        (subcategory: any) => subcategory.id === section_id
       )
-    }))
-    setCategoriesSubcategories(categoriesSubs)
-  }, [])
-
-  // renderizar as subcategories com seus articles
-  useEffect(() => {
-    const subcategoriesArticles = sections.map(subcategorie => ({
-      ...subcategorie,
-      articles: articles.filter(
-        article => article.section_id === subcategorie.id
-      )
-    }))
-    setSubcategoriesArticles(subcategoriesArticles)
-  }, [])
+      if (sub_category_index >= 0) {
+        data[category_index].sub_categories[sub_category_index].posts.push(
+          article
+        )
+      }
+    }
+  })
 
   return (
-    <Section className="mb-12">
-      <Title as="h3" className="normal-case text-2xl font-medium mb-4">
-        Artigos por categoria
-      </Title>
-      {categoriesSubcategories.map(categoria => (
-        <div key={categoria.id}>
-          <div className="container">
-            {/* <h1>{categoria.name}</h1> */}
-            <ul>
-              {categoria.sections.map(
-                (subcategoria: { id: Key; name: string }) => (
-                  <li key={subcategoria.id}>
-                    {/* <h2>{subcategoria.name}</h2> */}
-                    {/* {subcategoriesArticles.map(subcategorie => (
-                      <div key={subcategorie.id}>
-                        <ul>
-                          {subcategorie.articles.map(
-                            (article: { id: Key; title: string }) => (
-                              <li key={article.id}>{article.title}</li>
-                            )
-                          )}
-                        </ul>
-                      </div>
-                    ))} */}
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
-          <div>
-            --------------------------------------------------------------------------------------------------------------------
-          </div>
-        </div>
-      ))}
+    <Section
+      className="mb-16"
+      title={
+        <Title
+          as="h3"
+          className="normal-case text-2xl font-medium mb-4 text-left"
+        >
+          Artigos por categoria
+        </Title>
+      }
+    >
+      <div>
+        <CardsArticlesByCategory data={data} />
+      </div>
     </Section>
   )
 }

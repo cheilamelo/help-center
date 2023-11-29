@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/layout/ArticlesByCategory/index.tsx"
+    "components/layout/ArticlesByCategory_/index.tsx"
   ],
   "exclude": ["node_modules"]
 }
