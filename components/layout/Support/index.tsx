@@ -71,7 +71,7 @@ export const Support = () => {
             Ainda tem dúvidas? Estamos aqui para ajudar.
           </Text>
           <div className="w-[172px]">
-            <ButtonPrimary>Entrar em contato</ButtonPrimary>
+            <ButtonPrimary href="/contato">Entrar em contato</ButtonPrimary>
           </div>
         </div>
         <div className="border border-purplescale-200 rounded-lg px-12 py-6 w-[315px] flex flex-col items-center">

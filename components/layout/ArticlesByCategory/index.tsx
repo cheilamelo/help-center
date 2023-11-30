@@ -4,6 +4,7 @@ import { helpCenterService } from '@/services/help-center'
 import CardsArticlesByCategory from '../CardsArticlesByCategory'
 
 export default async function ArticlesByCategory() {
+  // const categories = await helpCenterService.getCategories()
   const {
     data: { categories }
   } = await helpCenterService.getCategories()
@@ -50,7 +51,6 @@ export default async function ArticlesByCategory() {
       }
     }
   })
-
   return (
     <Section
       className="mb-16"

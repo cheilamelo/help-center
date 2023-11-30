@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { ListIconColored } from '../content'
 
 interface Props {
   src: string

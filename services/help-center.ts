@@ -1,4 +1,5 @@
-import axios, { AxiosInstance } from 'axios'
+import { HelpCenterContentCategory } from '@/types/HelpCenterContent'
+import axios, { AxiosInstance, AxiosResponse } from 'axios'
 
 class HelpCenterService {
   api: AxiosInstance
@@ -10,6 +11,10 @@ class HelpCenterService {
       }
     })
   }
+  // getCategories(): Promise<HelpCenterContentCategory[]> {
+  //   return this.api.get('/categories?sort_order=desc').then(({ data }) => data)
+  // }
+
   getCategories() {
     return this.api.get('/categories?sort_order=desc')
   }

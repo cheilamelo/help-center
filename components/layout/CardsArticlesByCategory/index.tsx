@@ -8,6 +8,8 @@ import { useKeenSlider } from 'keen-slider/react'
 import S from './styles.module.css'
 import { IconColored } from '../ArticlesByCategory/components/IconColored'
 import { ListIconColored } from '../ArticlesByCategory/content'
+import { ShortcutsCategoriesWhite } from '../Shortcuts/content'
+import { IconCategory } from '../IconCategory'
 interface Props {
   data: any
   getImage?: any
@@ -76,14 +78,26 @@ export default function CardsArticlesByCategory({ data }: Props) {
       item => item.category_id === category_id.toString()
     )
 
-    if (category_image) {
+    const category_icon = ShortcutsCategoriesWhite.find(
+      item => item.category_id === category_id.toString()
+    )
+
+    if (category_image && category_icon) {
       return (
-        <IconColored
-          src={category_image.src}
-          accentColor={category_image.accentColor}
-          width={category_image.width}
-          height={category_image.height}
-        />
+        <>
+          <IconColored
+            src={category_image.src}
+            accentColor={category_image.accentColor}
+            width={category_image.width}
+            height={category_image.height}
+          />
+          <IconCategory
+            src={category_icon.src}
+            accentColor={category_icon.accentColor}
+            width={category_icon.width}
+            height={category_icon.height}
+          />
+        </>
       )
     } else {
       return <></>
